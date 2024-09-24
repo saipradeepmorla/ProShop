@@ -27,8 +27,8 @@ const CartScreen = () => {
     dispatch(removeFromCart(id));
   };
   const checkoutHandler = () => {
-    navigate('/login?redirect=/shipping')
-  }
+    navigate("/login?redirect=/shipping");
+  };
 
   return (
     <Row>
@@ -49,7 +49,7 @@ const CartScreen = () => {
                   <Col md={3}>
                     <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>₹{item.price}</Col>
+                  <Col md={2}>${item.price}</Col>
                   <Col md={2}>
                     <Form.Control
                       as="select"
@@ -66,7 +66,11 @@ const CartScreen = () => {
                     </Form.Control>
                   </Col>
                   <Col md={2}>
-                    <Button type="button" variant="light" onClick={() => removeFromCartHandler(item._id)}>
+                    <Button
+                      type="button"
+                      variant="light"
+                      onClick={() => removeFromCartHandler(item._id)}
+                    >
                       <FaTrash />
                     </Button>
                   </Col>
@@ -88,7 +92,7 @@ const CartScreen = () => {
                 )}
                 ) items
               </h2>
-              ₹{" "}
+              ${" "}
               {cartItems
                 .reduce(
                   (accumulator, item) => accumulator + item.price * item.qty,
@@ -101,7 +105,7 @@ const CartScreen = () => {
                 type="button"
                 className="btn-block"
                 disabled={cartItems.length === 0}
-                onClick={ checkoutHandler }
+                onClick={checkoutHandler}
               >
                 Proceed to CheckOut
               </Button>
